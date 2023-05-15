@@ -7,8 +7,8 @@
 - Контакты,
 - О нас,
 - Обратная связь.
-
   Вызов:
+  
   @GetMapping("/card")
 	  public String getCard() {
 	  	return "card";
@@ -20,8 +20,8 @@
   с хранением их на сервере в файле, передача данных осуществляется по JSON, 
   клиент и сервер общаются по средством передачи данных. 
   На странице предусмотреть форму добавления объектов в список.
-  
   Вызовы:
+  
   @GetMapping("/cars")
 	public String getCarsList(Model model) {
 		model.addAttribute("json", readFileAsString(path));
@@ -46,8 +46,8 @@
   с хранением их на сервере файле. передача данных осуществляется по JSON, 
   клиент и сервер общаются по средством передачи данных. Применить шаблон проектирования MVC. 
   На странице предусмотреть форму добавления объектов в список.
-  
   Вызовы:
+  
   @PostMapping("/cars/add-pojo")
 	public String addCarPOJO(@RequestBody List<CarDTO> carDTO) {
 		System.out.println(carDTO);
