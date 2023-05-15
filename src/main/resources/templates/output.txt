@@ -1,0 +1,7 @@
+CarDTO(brand=BMW, model=X5, year=2019, color=черный, bodyType=седан)
+CarDTO(brand=Toyota, model=Camry, year=2020, color=белый, bodyType=седан)
+CarDTO(brand=Mercedes-Benz, model=E-Class, year=2021, color=серебристый, bodyType=седан)
+CarDTO(brand=Honda, model=Civic, year=2018, color=красный, bodyType=купе)
+CarDTO(brand=Audi, model=A4, year=2022, color=синий, bodyType=седан)
+CarDTO(brand=44, model=55, year=66, color=55, bodyType=44)
+CarDTO(brand=Toyota, model=Chaser, year=1999, color=белый, bodyType=седан)

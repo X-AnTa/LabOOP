@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Список автомобилей</title>
+</head>
+
+<body>
+<div class="container">
+    <h1>Список автомобилей</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Год выпуска</th>
+            <th>Цвет</th>
+            <th>Тип кузова</th>
+        </tr>
+        </thead>
+        <tbody id="car-list"></tbody>
+    </table>
+
+    <a href="/cars/add-pojo">Добавить автомобиль</a>
+</div>
+
+<script th:inline="javascript" charset="UTF-8">
+    var cars = JSON.parse(/*[[${json}]]*/ "");
+    var carList = document.getElementById('car-list');
+
+    // Построение списка автомобилей
+    cars.forEach(function(car) {
+        var row = document.createElement('tr');
+        Object.keys(car).forEach(function(key) {
+            var cell = document.createElement('td');
+            cell.textContent = car[key];
+            row.appendChild(cell);
+        });
+        carList.appendChild(row);
+    });
+</script>
+</body>
+
+</html>

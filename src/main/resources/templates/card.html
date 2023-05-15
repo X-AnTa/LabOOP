@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Сайт визитка</title>
+</head>
+<body>
+<header >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" >Сайт визитка</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Услуги</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#feedback">Обратная связь</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section id="services" class="container page">
+        <h1>Услуги</h1>
+        <p>Наша компания предлагает широкий спектр услуг</p>
+        <li>1) Моделирование</li>
+        <li>2) Реализация</li>
+    </section>
+
+    <section id="about" class="container page">
+        <h1>О нас</h1>
+        <p>Мы являемся ведущей компанией в своей отрасли и предлагаем следующие преимущества:</p>
+        <ul>
+            <li>Опыт работы более 10 лет</li>
+            <li>Квалифицированный персонал</li>
+            <li>Индивидуальный подход к каждому клиенту</li>
+            <li>Качественное обслуживание</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="container page">
+        <h1>Контакты</h1>
+        <p>Свяжитесь с нами по следующим контактам:</p>
+        <ul>
+            <li>Email: test@gmail.com</li>
+            <li>Телефон: +79995876325</li>
+            <li>Адрес: ул. Звездная д.6</li>
+        </ul>
+    </section>
+
+    <section id="feedback" class="container page">
+        <h1>Обратная связь</h1>
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input type="text" class="form-control" id="name" placeholder="Введите ваше имя">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Введите ваш email">
+            </div>
+            <div class="form-group">
+                <label for="message">Сообщение</label>
+                <textarea class="form-control" id="message" rows="5" placeholder="Введите ваше сообщение"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+        <div id="feedbackMessage" class="mt-3" style="display: none;"></div>
+    </section>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script charset="UTF-8">
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = this.getAttribute('href');
+            showPage(target);
+        });
+    });
+
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var message = document.getElementById('message').value;
+        var feedbackMessage = document.getElementById('feedbackMessage');
+
+        feedbackMessage.innerHTML = 'Спасибо за обратную связь!';
+        feedbackMessage.style.display = 'block';
+
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+    });
+
+    function showPage(target) {
+        document.querySelectorAll('.page').forEach(function(page) {
+            if (page.id === target.substring(1)) {
+                page.style.display = 'block';
+            } else {
+                page.style.display = 'none';
+            }
+        });
+    }
+
+    showPage(window.location.hash || '#services');
+</script>
+
+</body>
+</html>

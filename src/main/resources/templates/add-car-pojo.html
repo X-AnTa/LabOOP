@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Добавить автомобиль</title>
+</head>
+
+<body>
+<div class="container">
+    <h1>Добавить автомобиль</h1>
+
+    <form id="car-form">
+        <div class="form-group">
+            <label for="brand">Марка:</label>
+            <input type="text" class="form-control" id="brand" required>
+        </div>
+        <div class="form-group">
+            <label for="model">Модель:</label>
+            <input type="text" class="form-control" id="model" required>
+        </div>
+        <div class="form-group">
+            <label for="year">Год выпуска:</label>
+            <input type="number" class="form-control" id="year" required>
+        </div>
+        <div class="form-group">
+            <label for="color">Цвет:</label>
+            <input type="text" class="form-control" id="color" required>
+        </div>
+        <div class="form-group">
+            <label for="body-type">Тип кузова:</label>
+            <input type="text" class="form-control" id="body-type" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+
+    <a href="/cars-pojo">Назад к списку автомобилей</a>
+</div>
+
+<script th:inline="javascript">
+    var cars = JSON.parse(/*[[${json}]]*/ []);
+    var carForm = document.getElementById('car-form');
+
+    carForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var brand = document.getElementById('brand').value;
+        var model = document.getElementById('model').value;
+        var year = document.getElementById('year').value;
+        var color = document.getElementById('color').value;
+        var bodyType = document.getElementById('body-type').value;
+
+        var newCar = {
+            "brand": brand,
+            "model": model,
+            "year": year,
+            "color": color,
+            "bodyType": bodyType
+        };
+
+        cars.push(newCar);
+        alert('Автомобиль успешно добавлен в список.');
+        var request = new XMLHttpRequest();
+        request.open("POST", "/cars/add-pojo", true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify(cars));
+
+        carForm.reset();
+    });
+</script>
+</body>
+
+</html>
