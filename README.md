@@ -10,9 +10,9 @@
   Вызов:
   
   	@GetMapping("/card")
-	  public String getCard() {
-	  	return "card";
-	  }
+	public String getCard() {
+		return "card";
+	}
 ------------------------    
 Лабораторная работа 2
 
