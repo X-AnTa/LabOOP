@@ -9,7 +9,7 @@
 - Обратная связь.
   Вызов:
   
-  @GetMapping("/card")
+  	@GetMapping("/card")
 	  public String getCard() {
 	  	return "card";
 	  }
@@ -22,7 +22,7 @@
   На странице предусмотреть форму добавления объектов в список.
   Вызовы:
   
-  @GetMapping("/cars")
+  	@GetMapping("/cars")
 	public String getCarsList(Model model) {
 		model.addAttribute("json", readFileAsString(path));
 		return "car-list";
@@ -48,7 +48,7 @@
   На странице предусмотреть форму добавления объектов в список.
   Вызовы:
   
-  @PostMapping("/cars/add-pojo")
+  	@PostMapping("/cars/add-pojo")
 	public String addCarPOJO(@RequestBody List<CarDTO> carDTO) {
 		System.out.println(carDTO);
 		labOOPService.fillCarsTxt(carDTO);
